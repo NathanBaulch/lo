@@ -128,8 +128,7 @@ func Mean[T constraints.Float | constraints.Integer](collection []T) T {
 	if length == 0 {
 		return 0
 	}
-	sum := Sum(collection)
-	return sum / length
+	return Sum(collection) / length
 }
 
 // MeanBy calculates the mean of a collection of numbers using the given return value from the iteration function.
@@ -139,8 +138,7 @@ func MeanBy[T any, R constraints.Float | constraints.Integer](collection []T, it
 	if length == 0 {
 		return 0
 	}
-	sum := SumBy(collection, iteratee)
-	return sum / length
+	return SumBy(collection, iteratee) / length
 }
 
 // Mode returns the mode (most frequent value) of a collection.

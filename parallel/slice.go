@@ -13,9 +13,7 @@ func Map[T any, R any](collection []T, iteratee func(item T, index int) R) []R {
 
 	for i, item := range collection {
 		go func(_item T, _i int) {
-			res := iteratee(_item, _i)
-
-			result[_i] = res
+			result[_i] = iteratee(_item, _i)
 
 			wg.Done()
 		}(item, i)
@@ -54,9 +52,7 @@ func Times[T any](count int, iteratee func(index int) T) []T {
 
 	for i := 0; i < count; i++ {
 		go func(_i int) {
-			item := iteratee(_i)
-
-			result[_i] = item
+			result[_i] = iteratee(_i)
 
 			wg.Done()
 		}(i)

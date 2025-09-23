@@ -66,8 +66,7 @@ func BenchmarkMap(b *testing.B) {
 			results := make([]string, len(arr))
 
 			for i, item := range arr {
-				result := strconv.FormatInt(item, 10)
-				results[i] = result
+				results[i] = strconv.FormatInt(item, 10)
 			}
 		}
 	})

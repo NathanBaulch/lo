@@ -628,8 +628,7 @@ type randomIntGenerator func(n int) int
 // Sample returns a random item from collection.
 // Play: https://go.dev/play/p/vCcSJbh5s6l
 func Sample[T any](collection []T) T {
-	result := SampleBy(collection, rand.IntN)
-	return result
+	return SampleBy(collection, rand.IntN)
 }
 
 // SampleBy returns a random item from collection, using randomIntGenerator as the random index generator.
@@ -645,8 +644,7 @@ func SampleBy[T any](collection []T, randomIntGenerator randomIntGenerator) T {
 // Samples returns N random unique items from collection.
 // Play: https://go.dev/play/p/vCcSJbh5s6l
 func Samples[T any, Slice ~[]T](collection Slice, count int) Slice {
-	results := SamplesBy(collection, count, rand.IntN)
-	return results
+	return SamplesBy(collection, count, rand.IntN)
 }
 
 // SamplesBy returns N random unique items from collection, using randomIntGenerator as the random index generator.
