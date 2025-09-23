@@ -60,7 +60,7 @@ func TestUniqMap(t *testing.T) {
 	}
 
 	users := []User{{Name: "Alice", age: 20}, {Name: "Alex", age: 21}, {Name: "Alex", age: 22}}
-	result := UniqMap(users, func(item User, index int) string {
+	result := UniqMap(users, func(item User, _ int) string {
 		return item.Name
 	})
 

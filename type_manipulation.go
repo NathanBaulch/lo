@@ -107,7 +107,7 @@ func ToAnySlice[T any](collection []T) []any {
 // FromAnySlice returns an `any` slice with all elements mapped to a type.
 // Returns false in case of type conversion failure.
 // Play: https://go.dev/play/p/P2sD0PMXw4F
-func FromAnySlice[T any](in []any) (out []T, ok bool) {
+func FromAnySlice[T any](collection []any) (out []T, ok bool) {
 	defer func() {
 		if r := recover(); r != nil {
 			out = []T{}
@@ -115,9 +115,9 @@ func FromAnySlice[T any](in []any) (out []T, ok bool) {
 		}
 	}()
 
-	result := make([]T, len(in))
-	for i := range in {
-		result[i] = in[i].(T) //nolint:errcheck,forcetypeassert
+	result := make([]T, len(collection))
+	for i := range collection {
+		result[i] = collection[i].(T) //nolint:errcheck,forcetypeassert
 	}
 	return result, true
 }

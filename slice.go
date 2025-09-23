@@ -113,7 +113,7 @@ func ForEach[T any](collection []T, iteratee func(item T, index int)) {
 // ForEachWhile iterates over elements of collection and invokes iteratee for each element
 // collection return value decide to continue or break, like do while().
 // Play: https://go.dev/play/p/QnLGt35tnow
-func ForEachWhile[T any](collection []T, iteratee func(item T, index int) (goon bool)) {
+func ForEachWhile[T any](collection []T, iteratee func(item T, index int) bool) {
 	for i := range collection {
 		if !iteratee(collection[i], i) {
 			break
@@ -444,7 +444,6 @@ func Drop[T any, Slice ~[]T](collection Slice, n int) Slice {
 	}
 
 	result := make(Slice, 0, len(collection)-n)
-
 	return append(result, collection[n:]...)
 }
 
@@ -554,7 +553,7 @@ func RejectMap[T any, R any](collection []T, callback func(item T, index int) (R
 // FilterReject mixes Filter and Reject, this method returns two slices, one for the elements of collection that
 // predicate returns truthy for and one for the elements that predicate does not return truthy for.
 // Play: https://go.dev/play/p/lHSEGSznJjB
-func FilterReject[T any, Slice ~[]T](collection Slice, predicate func(T, int) bool) (kept Slice, rejected Slice) {
+func FilterReject[T any, Slice ~[]T](collection Slice, predicate func(item T, index int) bool) (kept Slice, rejected Slice) {
 	kept = make(Slice, 0, len(collection))
 	rejected = make(Slice, 0, len(collection))
 
